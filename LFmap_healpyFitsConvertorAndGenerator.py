@@ -4,8 +4,6 @@ import numpy as np
 from astropy.wcs import WCS
 from astropy.io import fits
 
-LFmapPath = "/home/tomas/Documents/jupyterFiles/RDPerformanceOverviewDebugTool/sidereal-modulation-simulator/LFmap/pylfmap/"
-
 
 def fits2healpyFits(fitFile):
     nside = 64
@@ -96,7 +94,6 @@ def main(startFrequency="30.0", endFrequency="80.0", fdelta=0.1, path="pylfmap/L
 
     global LFmapPath
     LFmapPath = path
-    # LFmapPath='/home/tomas/Documents/jupyterFiles/RDPerformanceOverviewDebugTool/sidereal-modulation-simulator/pylfmap/LFmap/'
     cd_to_lfmap_folder = "cd " + LFmapPath + "; "
 
     # set starting frequency
