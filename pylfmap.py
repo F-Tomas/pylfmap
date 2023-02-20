@@ -11,11 +11,12 @@ import sys
 import numpy as np
 import importlib
 import healpy as hp
+from healpy.rotator import Rotator
 import wget
 from os.path import exists
 import tarfile
 import subprocess
-from . import LFmap_healpyFitsConvertorAndGenerator
+from .LFmap_healpyFitsConvertorAndGenerator import *
 
 
 ftar = "LFmap_1.0.tar"
@@ -131,7 +132,7 @@ class LFmap:
         print("[INFO] Outputing map at {} MHz".format(frequency))
         path_to_fit_file = self._path + "/LFmap_" + str(frequency) + "_healpy.fits"
         if exists(path_to_fit_file):
-            return hp.read_map(path_to_fit_file, verbose=True)
+            return hp.rotator.Rotator.rotate_map_pixel(Rotator(coord=["C", "G"]), hp.read_map(path_to_fit_file, verbose=True))
         else:
             print(
                 "[ERROR] Required frequency '{}' does not exists! Use function LFmap.generate_new_frequencies() to generate it!".format(
