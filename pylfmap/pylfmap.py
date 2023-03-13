@@ -16,6 +16,7 @@ import wget
 from os.path import exists
 import tarfile
 import subprocess
+from . import LFmap_healpyFitsConvertorAndGenerator
 
 
 ftar = "LFmap_1.0.tar"

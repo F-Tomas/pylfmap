@@ -18,5 +18,5 @@ setup(
     author_email="t.fodran@astro.ru.nl",
     url="https://gitlab.iap.kit.edu/auger-observatory/sandboxes/t.fodran/radiocalibrationtoolkit",
     packages=find_packages(),
-    install_requires=["healpy", "numpy"],
+    install_requires=["healpy", "numpy", "astropy", "wget"],
 )

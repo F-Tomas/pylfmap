@@ -1,2 +1,2 @@
 from .pylfmap import *
-from .LFmap_healpyFitsConvertorAndGenerator import *
+from . import LFmap_healpyFitsConvertorAndGenerator
