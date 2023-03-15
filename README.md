@@ -18,3 +18,9 @@ Alternatively, clone the directory and run the setup.py:
         python setup.py install
         
 During the installation, the original C++ LFmap will be downloaded, and on the first run, sky model data in the range from 30 to 80 MHz with 0.1 MHz spacing will be generated.
+
+## Examples
+
+Checkout the `working_example.ipynb` jupyter notebook example.
+
+
