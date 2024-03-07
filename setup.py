@@ -11,7 +11,7 @@ def readme():
 
 setup(
     name="pylfmap",
-    version="0.2",
+    version="0.3",
     description="Python wrapper for LFmap software",
     long_description=readme(),
     author="Tomas Fodran",
