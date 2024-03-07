@@ -14,12 +14,10 @@ import healpy as hp
 from healpy.rotator import Rotator
 import wget
 from os.path import exists
-import tarfile
 import subprocess
 from . import LFmap_healpyFitsConvertorAndGenerator
 
 
-ftar = "LFmap_1.0.tar"
 hpfits_folder = "healpyFits"
 
 # this needs absolute path to the folder
@@ -27,7 +25,6 @@ pylfmap_path = os.path.dirname(__file__)
 # path to various files and folders
 lfmap_abs_path = os.path.join(pylfmap_path, "LFmap/")
 lfdir = lfmap_abs_path
-ftar_path = os.path.join(pylfmap_path, ftar)
 
 # later for the shell
 cd_to_lfmap_folder = "cd " + lfmap_abs_path + "; "
@@ -37,6 +34,18 @@ cd_to_lfmap_folder = "cd " + lfmap_abs_path + "; "
 
 do_compile = False
 do_convert = False
+
+def clone_git_repo(repo_url, destination_folder):
+    try:
+        # Build the git clone command
+        command = ['git', 'clone', repo_url, destination_folder]
+        
+        # Execute the command
+        subprocess.run(command, check=True)
+        print(f"Repository cloned successfully into {destination_folder}")
+    except subprocess.CalledProcessError as e:
+        # Handle errors in the called git command
+        print(f"Error occurred while cloning the repository: {e}")
 
 if exists(os.path.join(lfdir, hpfits_folder)):
     print("[INFO] LFmap: Import successful.")
@@ -54,15 +63,9 @@ else:
             print("[INFO] LFmap files should exists. I will compile and convert then.")
         else:
             print(
-                "[INFO] LFmap folder does not exists. I will download the tar, untar it, compile and convert."
+                "[INFO] LFmap folder does not exists. I will clone the repo, compile and convert."
             )
-            if not exists(ftar_path):
-                os.mkdir(lfdir)
-                URL = "http://www.astro.umd.edu/~emilp/LFmap/" + ftar
-                response = wget.download(URL, ftar_path)
-            t = tarfile.open(ftar_path)
-            t.extractall(lfdir)
-            os.remove(ftar_path)
+            clone_git_repo('https://github.com/epolisensky/LFmap.git', lfmap_abs_path)
 
 if do_compile == True:
     # subprocess.Popen(["make"], stdout=subprocess.PIPE, cwd=lfdir)
@@ -83,7 +86,6 @@ if do_convert == True:
     print(
         "[INFO] pylfmap was initialized with frequencies 30-80 MHz with step of 0.1 MHz. You can generate later your custom ranges and values."
     )
-
 
 class LFmap:
     def __init__(self):
