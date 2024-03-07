@@ -1,6 +1,6 @@
 # pylfmap
 
-This code provides a python interface for the [LFmap](http://www.astro.umd.edu/~emilp/LFmap/LFmap_1.0.tar) galaxy radio sky map generator. For more about LFmap read [here](https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.192.5753&rep=rep1&type=pdf). With the pylfmap class one can use all the features provided by the [healpy](https://github.com/healpy/healpy) (or other relevant python packages).
+This code provides a python interface for the [LFmap](https://github.com/epolisensky/LFmap) galaxy radio sky map generator. For more about LFmap read [here](https://leo.phys.unm.edu/~lwa/memos/memo/lwa0111.pdf). With the pylfmap class one can use all the features provided by the [healpy](https://github.com/healpy/healpy) (or other relevant python packages).
 
 ## Install
 
